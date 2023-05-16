@@ -78,6 +78,7 @@ function initBuild() {
     let abi = parts[2];
     chain = chain
       .then(function () {
+        console.log(runtime);
         return build(runtime, version, abi);
       })
       .then(function () {
@@ -95,7 +96,7 @@ function initBuild() {
       return;
     }
 
-    return uploadFiles(files);
+    // return uploadFiles(files);
   });
 
   cpGyp();
@@ -141,7 +142,7 @@ function build(runtime, version, abi) {
     ];
 
     if (/^electron/i.test(runtime)) {
-      args.push('--dist-url=https://atom.io/download/electron');
+      args.push('--dist-url=https://electronjs.org/headers');
     }
 
     if (parseInt(abi) >= 80) {
